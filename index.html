@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                padding: 20px;
+                background-color: #f4f4f4;
+            }
+            
+            .container {
+                background-color: #ffffff;
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .ejemplo {
+                background-color: black;
+                color: #0af358;
+            }
+
+            h1 {
+                color: #333333;
+            }
+            
+            .output {
+                margin-top: 10px;
+                color: #007bff;
+            }
+        </style>
+    </head>
+<body>
+     
+    <div class="container">
+        <h1>Programación Orientada a Objetos</h1>
+        <p>Una clase, en el contexto de la programación orientada a objetos, es un concepto fundamental que se utiliza para definir un tipo de objeto con atributos y comportamientos específicos. Las clases son una forma de organizar y estructurar el código en programas informáticos, permitiendo la creación de objetos que comparten características y funciones comunes.</p>
+        
+        <p>En términos más simples, puedes pensar en una clase como un plano o una plantilla para crear objetos. Una vez que has definido una clase, puedes crear múltiples instancias u objetos basados en esa clase. Estos objetos tendrán las mismas propiedades y métodos que se hayan definido en la clase.</p>
+        
+        <p>Las clases constan de dos componentes principales:</p>
+        <ul>
+            <li><strong>Atributos o Propiedades:</strong> Son las características o datos asociados con la clase. Por ejemplo, si tienes una clase "Coche", sus atributos podrían ser "marca", "modelo" y "color".</li>
+            <li><strong>Métodos:</strong> Son las funciones o acciones que pueden realizar los objetos creados a partir de la clase. Siguiendo el ejemplo del coche, los métodos podrían ser "arrancar", "detener" y "acelerar".</li>
+        </ul>
+        
+        <h2>Ejemplo en PHP</h2>
+        <p>Aquí tienes un ejemplo de una clase "Coche" en php:</p>
+        <pre class="ejemplo">
+
+            class Coche {
+                public $marca;
+                public $modelo;
+                public $color;
+                
+                public function __construct($marca, $modelo, $color) {
+                    $this->marca = $marca;
+                    $this->modelo = $modelo;
+                    $this->color = $color;
+                }
+                
+                public function arrancar() {
+                    echo "El {$this->marca} {$this->modelo} arrancó.";
+                }
+                
+                public function detener() {
+                    echo "El {$this->marca} {$this->modelo} se detuvo.";
+                }
+            }
+            
+            $miCoche = new Coche("Toyota", "Corolla", "Azul");
+            $miCoche->arrancar();
+            $miCoche->detener();
+         </pre>
+        <div class="output">El Toyota Corolla arrancó.</div>
+    </div>
+</body>
+</html>
