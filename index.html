@@ -1,78 +1,244 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <style>
-            body {
-                padding: 20px;
-                background-color: #f4f4f4;
-            }
-            
-            .container {
-                background-color: #ffffff;
-                border-radius: 5px;
-                padding: 20px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            
-            .ejemplo {
-                background-color: black;
-                color: #0af358;
-            }
+<!-- ESTE PROGRAMA FUE DISEÑADO Y CREADO POR WILFRAN MARTINEZ ING SOFTWARE SEM II -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano inclinado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
 
-            h1 {
-                color: #333333;
-            }
-            
-            .output {
-                margin-top: 10px;
-                color: #007bff;
-            }
-        </style>
-    </head>
+<style>
+     body {
+    margin: 0; /* Elimina los márgenes predeterminados del body */
+    padding: 0; /* Elimina el relleno predeterminado del body */
+  }
+    header {
+ background-color: rgb(97, 185, 159);
+  width: 30%;
+  height: 100%;
+  position: fixed; /* Fija la posición del encabezado */
+  right: 0; /* Lo fija completamente a la derecha */
+  top: 0; /* Lo fija en la parte superior */
+  
+}
+section {
+    width: 70%;
+    height: 100vh; /* Usa 100% de la altura del viewport */
+    background-color: rgb(201, 191, 191);
+  }
+  /* Estilos para centrar el h3 */
+.titulo {
+    text-align: center; /* Alinea el texto en el centro */
+    margin: 20px;
+}
+#planoInclinado {
+            display: block;
+            margin: 0 auto;
+        }
+</style>
 <body>
-     
-    <div class="container">
-        <h1>Programación Orientada a Objetos</h1>
-        <p>Una clase, en el contexto de la programación orientada a objetos, es un concepto fundamental que se utiliza para definir un tipo de objeto con atributos y comportamientos específicos. Las clases son una forma de organizar y estructurar el código en programas informáticos, permitiendo la creación de objetos que comparten características y funciones comunes.</p>
+    
+    <header>
+        <div class="titulo">
+            <h3>Calcular plano inclinado</h3>
+        </div>
         
-        <p>En términos más simples, puedes pensar en una clase como un plano o una plantilla para crear objetos. Una vez que has definido una clase, puedes crear múltiples instancias u objetos basados en esa clase. Estos objetos tendrán las mismas propiedades y métodos que se hayan definido en la clase.</p>
-        
-        <p>Las clases constan de dos componentes principales:</p>
-        <ul>
-            <li><strong>Atributos o Propiedades:</strong> Son las características o datos asociados con la clase. Por ejemplo, si tienes una clase "Coche", sus atributos podrían ser "marca", "modelo" y "color".</li>
-            <li><strong>Métodos:</strong> Son las funciones o acciones que pueden realizar los objetos creados a partir de la clase. Siguiendo el ejemplo del coche, los métodos podrían ser "arrancar", "detener" y "acelerar".</li>
-        </ul>
-        
-        <h2>Ejemplo en PHP</h2>
-        <p>Aquí tienes un ejemplo de una clase "Coche" en php:</p>
-        <pre class="ejemplo">
+        <p class="lead m-3 text-muted">
+             El programa calculara la velocidad con la que se desliza el bloque dependiendo el coheficiente de ficcion.
+        </p>
 
-            class Coche {
-                public $marca;
-                public $modelo;
-                public $color;
-                
-                public function __construct($marca, $modelo, $color) {
-                    $this->marca = $marca;
-                    $this->modelo = $modelo;
-                    $this->color = $color;
+        <!-- FORMULARIO POR DONDE INGRESAN LOS DATOS A CALCULAR -->
+        <form id="formulario">
+
+            <div class="mb-3 m-3">
+                <label for="exampleFormControlInput1" class="form-label">Masa del bloque (kg):</label>
+                <input type="number" id="masaBloque" step="0.01" class="form-control" >
+              </div>
+              <div class="mb-3 m-3">
+                <label for="exampleFormControlInput1" class="form-label">Ángulo del plano inclinado (grados):</label>
+                <input type="number" id="anguloPlanoInclinado" step="0.01" class="form-control">
+              </div>
+              <div class="mb-3 m-3">
+                <label for="exampleFormControlInput1" class="form-label">Coeficiente de fricción cinética:</label>
+                <input type="number" id="coeficienteFriccion" step="0.01" class="form-control" required>
+              </div>
+           
+            <div class="d-grid gap-2 col-6 mx-auto mb-2">
+                <!-- BOTON PARA CALCULAR LA ACELERACION -->
+                <button class="btn btn-primary" type="button"  onclick="calcularAceleracion();">Calcular aceleracion</button>
+              
+            </div>  
+        </form>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" id="dibujarBtn">Dibujar Plano Inclinado</button>
+      </div>
+
+        <script> 
+            //script para calcular la acelaracion del blok 
+            function calcularAceleracion() {
+
+            // Simular un clic en el botón "Iniciar Movimiento"
+            var btnIniciarMovimiento = document.getElementById('iniciarMovimientoBtn');
+            btnIniciarMovimiento.click();
+            
+              const gravedad = 9.81; // Definir la gravedad como una constante en el ámbito global
+              // Obtener los valores ingresados por el usuario
+              var masaBloque = parseFloat(document.getElementById("masaBloque").value);
+              var anguloPlanoInclinado = parseFloat(document.getElementById("anguloPlanoInclinado").value);
+              var coeficienteFriccion = parseFloat(document.getElementById("coeficienteFriccion").value);
+            
+              // Realizar los cálculos
+              const anguloEnRadianes = anguloPlanoInclinado * (Math.PI / 180);
+              
+              const fuerzaGravitatoria = masaBloque * gravedad;
+              const fuerzag = fuerzaGravitatoria.toFixed(2);  // Redondea a 2 decimales
+            
+              const fuerzaGravitatoriaEnDireccionPlano = fuerzag * Math.sin(anguloEnRadianes);
+            
+              const fuerzaNormal = fuerzag * Math.cos(anguloEnRadianes);
+            
+              const fuerzaFriccion = coeficienteFriccion * fuerzaNormal;
+            
+              const aceleracion = (fuerzaGravitatoriaEnDireccionPlano - fuerzaFriccion) / masaBloque;
+            
+            
+            const velocidadX = 2 * Math.cos(anguloEnRadianes);
+            const velocidadY = 2 * Math.sin(anguloEnRadianes) * Math.cos(anguloEnRadianes);// Calcular la velocidad vertical en función de la posición horizontal
+            
+             const vel = velocidadX + velocidadY;
+
+              // Mostrar el resultado
+              setTimeout(function() {
+                // Código para mostrar la alerta
+                alert(`La aceleración del bloque en el plano inclinado es: ${aceleracion.toFixed(2)} m/s²\nLa velocidad del bloque en el plano inclinado es: ${vel.toFixed(3)} U`);
+
+
+              }, 2200); // milisegundos (2 segundos)
+
+
+            }
+       </script>
+    </header>
+    
+    <section>
+        <figure class="text-center ">
+            <blockquote class="blockquote">
+              <p class="p-2">Esto es una representacion grafica del plano inclinado en tiempo real</p>
+            </blockquote>
+          </figure>
+
+          <canvas id="planoInclinado" width="500" height="500"></canvas>
+
+          <input type="hidden" id="iniciarMovimientoBtn"></input>
+        
+          <script>
+
+            const canvas = document.getElementById("planoInclinado");
+            const ctx = canvas.getContext("2d");
+            const anguloVariableInput = document.getElementById("anguloPlanoInclinado");
+            const dibujarBtn = document.getElementById("dibujarBtn");
+            const iniciarMovimientoBtn = document.getElementById("iniciarMovimientoBtn");
+            
+            let bloqueX = 35; // Posición inicial del bloque
+            let bloqueY = 0;
+            let anguloVariable = 50; // Ángulo inicial
+            let movimientoIniciado = false;
+            
+            function dibujarPlanoInclinado(anguloVariable) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+                // Calcular los catetos
+                const longitud_del_plano_inclinado = 450; // Longitud arbitraria del plano inclinado
+                const catetoHorizontal = longitud_del_plano_inclinado * Math.cos(anguloVariable * (Math.PI / 180));
+                const catetoVertical = longitud_del_plano_inclinado * Math.sin(anguloVariable * (Math.PI / 180));
+            
+                // Dibujar el plano inclinado
+                ctx.beginPath();
+                ctx.moveTo(50, 350);
+                ctx.lineTo(50 + catetoHorizontal, 350);
+                ctx.lineTo(50, 350 - catetoVertical);
+                ctx.closePath();
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+            
+                // Dibujar el bloque
+                ctx.fillStyle = "blue"; //color del blok
+            
+                // Guardar el estado actual del contexto
+                ctx.save();
+            
+                if (anguloVariable <= 25) {
+              
+                    ctx.translate(bloqueX , 315 - catetoVertical); // se controla la altura inicial del blok
+            
+                }else if (anguloVariable > 25 && anguloVariable <= 40) {
+              
+                    ctx.translate(bloqueX , 303 - catetoVertical); // se controla la altura inicial del blok
+                } else{
+                    
+                    ctx.translate(bloqueX , 295 - catetoVertical); // se controla la altura inicial del blok
                 }
-                
-                public function arrancar() {
-                    echo "El {$this->marca} {$this->modelo} arrancó.";
-                }
-                
-                public function detener() {
-                    echo "El {$this->marca} {$this->modelo} se detuvo.";
+            
+                // Aplicar una rotación de grados
+                ctx.rotate(anguloVariable * (Math.PI / 180)); // Realiza la rotación
+            
+                // Dibuja el bloque rotado
+                ctx.fillRect(bloqueX, bloqueY, 30, 30);
+            
+                // Restaurar el estado original del contexto
+                ctx.restore();
+            
+            }
+  
+            function iniciarMovimiento() {
+                if (!movimientoIniciado) {
+                    movimientoIniciado = true;
+                    moverBloque();
                 }
             }
             
-            $miCoche = new Coche("Toyota", "Corolla", "Azul");
-            $miCoche->arrancar();
-            $miCoche->detener();
-         </pre>
-        <div class="output">El Toyota Corolla arrancó.</div>
-    </div>
+            function moverBloque() {
+                if (bloqueX < 350) {
+                    
+                    const velocidad = 2; // Velocidad de desplazamiento
+                    
+                    const anguloEnRadianes = anguloVariable * (Math.PI / 180); // convierte el angulo en radianes 
+            
+                    const velocidadX = velocidad * Math.cos(anguloEnRadianes);
+                    const velocidadY = velocidad * Math.sin(anguloEnRadianes) * Math.cos(anguloEnRadianes);// Calcular la velocidad vertical en función de la posición horizontal
+                    
+                    
+                    bloqueX += velocidadX; // Controla la dirección horizontal
+                    bloqueY += velocidadY; // Controla la dirección vertical
+            
+                    // Limitar la posición del bloque para que no se salga del plano
+                    if (bloqueX > 253) {
+                        bloqueX = 250;
+                        bloqueY = catetoVertical - (350 * Math.tan(anguloEnRadianes));
+                    }
+            
+                    dibujarPlanoInclinado(anguloVariable);
+                    requestAnimationFrame(moverBloque);
+            
+                } else {
+                    alert("El bloque ha llegado al final del plano inclinado. ");
+                    movimientoIniciado = false;
+                }
+            }        
+            dibujarBtn.addEventListener("click", () => {
+                anguloVariable = parseFloat(anguloVariableInput.value);
+                dibujarPlanoInclinado(anguloVariable);
+            });
+            iniciarMovimientoBtn.addEventListener("click", iniciarMovimiento);
+            
+            </script>
+    </section>
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </html>
