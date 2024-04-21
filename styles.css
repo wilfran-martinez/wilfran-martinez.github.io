@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    width: auto;
+    height: auto;
   }
   
   header {
@@ -26,6 +28,7 @@ body {
     color: #fff;
     text-decoration: none;
   }
+  
   footer {
     background-color: #494949;
     color: #fff;
