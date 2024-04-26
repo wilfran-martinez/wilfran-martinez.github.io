@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="css/styles.css">
+      <link rel="stylesheet" href="css/style_menu.css">
+      <link rel="stylesheet" href="css/style_code.css">
+      <link rel="icon" href="img/icon-modified.png">
+
+      <title>Ventana basica en java</title>
+      
+    </head>
+<body>
+    <header>
+        <h1>Ventana basica en java</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Sobre mí</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <div class="row" style="width: 99%;">
+    <div class="col-3" style="background: #dbd8d8; padding: 1px; ">
+
+      <ul class="accordion-menu">
+        <li>
+          <div class="dropdownlink"><i class="fa fa-road" aria-hidden="true"></i> Programacion
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <ul class="submenuItems">
+            <li><a href="ventana-java.html">VENTANA (Ventana básica en Java)</a></li>
+            <li><a href="P_orietada.html">POO (Programación Orientada a Objetos)</a></li>
+            <li><a href="pila.html">PILA - LIFO(Last In, First Out)</a></li>
+            <li><a href="queue.html">COLA - FIFO (First In, First Out)</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="dropdownlink"><i class="fa fa-paper-plane" aria-hidden="true"></i> Matematicas
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <ul class="submenuItems">
+            <li><a href="#">Fiction book 1</a></li>
+            <li><a href="#">Fiction book 2</a></li>
+            <li><a href="#">Fiction book 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="dropdownlink"><i class="fa fa-quote-left" aria-hidden="true"></i> Fisica
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <ul class="submenuItems">
+            <li><a href="#">Fantasy book 1</a></li>
+            <li><a href="#">Fantasy book 2</a></li>
+            <li><a href="#">Fantasy book 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="dropdownlink"><i class="fa fa-motorcycle" aria-hidden="true"></i> Mecanica
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
+          <ul class="submenuItems">
+            <li><a href="#">Action book 1</a></li>
+            <li><a href="#">Action book 2</a></li>
+            <li><a href="#">Action book 3</a></li>
+          </ul>
+        </li>
+      </ul>
+  
+      </div>
+    <div class="col-8" >
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+
+          <div class="container">
+            <h1>Ventana basica en java</h1>
+            <p>Este es solo un ejemplo básico para crear una ventana en Java. Puedes agregar más componentes a la ventana, como botones, etiquetas, campos de texto, etc., para crear interfaces de usuario más complejas.</p>
+
+
+<h2>Ventana:</h2>
+
+<div class="ventana-basica-java">
+    <img src="img/Captura de pantalla 2024-04-24 123536.png" alt="">
+</div>
+
+<h2>Código Java:</h2>
+
+<pre class="ejemplo">
+<code>
+    <div class="editor">
+    <span class="keyword">import</span> <span class="clase">javax.swing.*;</span>
+    <span class="keyword">import</span> <span class="clase">java.awt.*;</span>
+
+        <span class="keyword">public class</span> <span class="clase">Ventana</span> <span class="keyword">extends</span> <span class="clase">JFrame</span> {<br>
+            <span class="comment">// Constructor de la clase Ventana</span>
+          <span class="keyword">public</span> <span class="clase">Ventana</span>() {
+
+            <span class="comment">// Establece el título de la ventana</span>
+            <span class="metodo">setTitle</span>(<span class="string">"Sistema"</span>);
+
+            <span class="comment">// Establece la operación de cierre cuando se hace clic en el botón de cierre</span>
+            <span class="metodo">setDefaultCloseOperation</span>(JFrame.EXIT_ON_CLOSE);
+
+            <span class="comment">// Establece el tamaño de la ventana a 800x600 píxeles</span>
+            <span class="metodo">setSize</span>(800, 600);
+
+        <span class="comment">// Centra la ventana en la pantalla</span>
+        <span class="metodo">setLocationRelativeTo</span>(<span class="keyword">null</span>);
+
+        <span class="comment">// Cargar la imagen del icono</span>
+        <span class="clase">ImageIcon</span> icono = <span class="keyword">new</span> <span class="clase">ImageIcon</span>(<span class="string">"img/icon-modified.png"</span>);
+        <span class="clase">Image</span> imagen = icono.getImage();
+        <span class="comment">// Establecer la imagen como icono de la ventana</span>
+        <span class="metodo">setIconImage</span>(imagen);
+        }
+        
+        <span class="comment">// Método main, punto de entrada del programa</span>
+        <span class="keyword">public static void</span> <span class="metodo">main</span>(<span class="keyword">String</span>[] <span class="variable">args</span>) {<br>
+        <span class="comment">// SwingUtilities.invokeLater se utiliza para asegurar que la creación de la interfaz de usuario se ejecute en el subproceso de despacho de eventos de Swing</span>
+        SwingUtilities.invokeLater(() -> {
+       
+        <span class="comment">// Crea una instancia de la clase Ventana</span>
+        <span class="clase">Ventana</span> ventana = <span class="keyword">new</span> <span class="clase">Ventana</span>();
+        
+        <span class="comment">// Hace visible la ventana</span>
+        ventana.<span class="metodo">setVisible</span>(<span class="keyword">true</span>);
+        });
+        }
+        }
+    </div>
+</code>
+</pre>   
+
+</div>
+</div>
+</div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/menu-desplegable.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
