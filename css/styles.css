@@ -29,7 +29,153 @@ body {
     color: #fff;
     text-decoration: none;
   }
-  
+  .title{
+    padding: 5px 0px;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.09);
+    position: relative 0.09;
+    margin-bottom: 3em;
+}
+.sub-title {
+    letter-spacing: 3px;
+    font-size: 14px;
+    color: #aaa;
+}
+.section{
+  margin: 4em;
+}
+.cd-section {
+  margin: 0 auto;
+  padding: 2em 0;
+}
+.cd-section h2 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  margin-bottom: .6em;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 1170px) {
+  .cd-section {
+    margin: 0 auto;
+    padding: 2em 0;
+  }
+  .cd-section h2 {
+    font-size: 30px;
+    font-size: 1.875rem;
+  }
+  .cd-section p {
+    font-size: 20px;
+    font-size: 1.25rem;
+  }
+} 
+
+.cd-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.cd-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.borde-derecho {
+  border: none; /* Remueve cualquier borde existente */
+  border-left: 2px solid black; /* Agrega un borde derecho negro de 3px de grosor */
+  padding: 7px;
+}
+
+ /* estilos seccion herramientas */
+
+ .herramientas {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Opcional: centra horizontalmente también */
+  height: 300px; /* Ajusta el tamaño del contenedor según sea necesario */
+  border: 1px solid #f1f1f1; /* Solo para visualización */
+}
+.btn_herramientas {
+  width: 90%; /* Ajusta el tamaño del botón según sea necesario */
+  height: 60%; /* Ajusta el tamaño del botón según sea necesario */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+}
+
+
+.proyectos {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Opcional: centra horizontalmente también */
+  height: 340px; /* Ajusta el tamaño del contenedor según sea necesario */
+  border: 1px solid #f7f7f7; /* Solo para visualización */
+}
+.btn_proyectos{
+  width: 90%; /* Ajusta el tamaño del botón según sea necesario */
+  height: auto; /* Ajusta el tamaño del botón según sea necesario */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+}
+
+
+.icono {
+  display: inline-block;
+  margin: 10px;
+  transition: transform 0.3s ease; /* Añade una transición suave */
+}
+
+.icono:hover {
+  transform: scale(1.5); /* Aumenta el tamaño al pasar el cursor */
+}
+.icono{
+cursor: pointer;
+margin: 10px;
+}
+ /* aqui terminan los estilos de herramientas */
+
+ /* estilos seccion contacto */
+
+.contacto {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Opcional: centra horizontalmente también */
+  height: 300px; /* Ajusta el tamaño del contenedor según sea necesario */
+  border: 1px solid #e9e5e5; /* Solo para visualización */
+}
+
+.btn_contacto {
+  width: 80%; /* Ajusta el tamaño del botón según sea necesario */
+  height: 60%; /* Ajusta el tamaño del botón según sea necesario */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+}
+.icontacto {
+    display: inline-block;
+    margin: 15px;
+    transition: transform 0.3s ease; /* Añade una transición suave */
+}
+
+.icontacto:hover {
+    transform: scale(1.1); /* Aumenta el tamaño al pasar el cursor */
+}
+/* aqui finalizan los estilos de la seccion de contacto */
+
+
   .ventana-basica-java {
     text-align: center;
 }
@@ -42,8 +188,6 @@ body {
 }
   
   footer {
-    background-color: #494949;
-    color: #fff;
     text-align: center;
     padding: 15px;
   }
